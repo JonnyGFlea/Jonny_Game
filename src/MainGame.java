@@ -31,6 +31,7 @@ public class MainGame {
 	   }
 	   public static void main(String args[]) throws InterruptedException {
 		   ArrayList<Race> raceList = new ArrayList<Race>();
+		   int correct = 0;
 		   Race dwarf = new Race("Dwarf", "Bold and hardy");
     	   Race elf = new Race("Elf", "a magical people");
            Race halfling = new Race("Halfling", "The diminutive halflings survive in a world full of larger creatures");
@@ -57,14 +58,39 @@ public class MainGame {
 		   System.out.println("");
 		   typeItOut(sentenceFour);
 		   System.out.println("");
-		   String input = scanner.next();
-		   if(input.equals("help"))
+		   boolean good = false;
+		   while (!good);
 		   {
-			   for(Race r : raceList)
+			 String input = scanner.next();
+			 if(input.equals("help"))
 			   {
-			   System.out.println(r +": " + r.getRaceInfo());
+				   for(Race r : raceList)
+				   {
+				   System.out.println(r +": " + r.getRaceInfo());
+				   }
 			   }
-		   }
+			 for(Race r : raceList)
+			 {
+		    	 if(input.equals(r))
+		    	 {
+		    		 System.out.println(r);
+		    		 System.out.println("Wow! A " + input + " what a great choice!");
+		    		 good = true;
+		    	 }
+			 
+			     else
+			     {
+			       correct++;
+			       if(correct == 4)
+			    	   System.out.println("Not a race");
+		   
+			     }
+			 }
+		}
+		   
+		   
+		   /*
+		   
 		   else
 		   {
 			   for(Race r : raceList)
@@ -75,6 +101,7 @@ public class MainGame {
 				   }
 			   
 			   }
-		   } 
+		   }
+		   */
 	   }
 }
