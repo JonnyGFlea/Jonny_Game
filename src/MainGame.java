@@ -61,11 +61,20 @@ public class MainGame {
 		   if(input.equals("help"))
 		   {
 			   for(Race r : raceList)
+			   {
 			   System.out.println(r +": " + r.getRaceInfo());
+			   }
 		   }
 		   else
 		   {
-			   System.out.println("Wow! A " + input + " what a great choice!");
-		   }
-		} 
+			   for(Race r : raceList)
+			   {
+				   if(input.equals(r.getRace()))
+				   {
+					   System.out.println("Wow! A " + input + " what a great choice!"); 
+				   }
+			   
+			   }
+		   } 
+	   }
 }

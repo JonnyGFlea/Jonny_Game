@@ -7,7 +7,10 @@ public class Race {
 			race = name;
 			description = desc;
 	    }
-		
+		public String getRace()
+		{
+			return race;
+		}
 		public String getRaceInfo()
 		{
 			return description;
