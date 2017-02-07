@@ -1,15 +1,18 @@
+import java.util.*;
 
 public class Character {
 	
 	private String name;
 	private String race;
 	private String classType;
+  	ArrayList<String> backpack;
 	
-	public Character(String n, String r, String c){
+	public Character(String n, String r, String c, ArrayList<String> b){
 		name = n;
 		race = r;
 		classType = c;
-    }
+      		backpack = b;
+    	}
 	
 	public String getName()
 	{
@@ -23,6 +26,11 @@ public class Character {
 	{
 		return classType;
 	}
+   	public ArrayList<String> getBackpack()
+	{
+		return backpack;
+	}
+   
 	public String setName(String n)
 	{
 		return name = n;
@@ -34,5 +42,10 @@ public class Character {
 	public String setClassType(String c)
 	{
 		return classType = c;
-	}		 
+	}
+   
+   	public void addBackpack(String b)
+	{
+      	backpack.add(b);
+	}	 
 }
