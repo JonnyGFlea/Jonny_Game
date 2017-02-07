@@ -2,17 +2,25 @@ import java.util.*;
 
 public class Character {
 	
-	private String name;
-	private String race;
-	private String classType;
-  	ArrayList<String> backpack;
+   private int age;
+   private String name;
+   private String gender;
+   
+   private String alignment;
+   private String race;
+   private String classType;
+
+   private int level;
+   private int experience;
+   
+   private ArrayList<String> backpack;
 	
-	public Character(String n, String r, String c, ArrayList<String> b){
-		name = n;
-		race = r;
-		classType = c;
-      		backpack = b;
-    	}
+   public Character(String n, String r, String c, ArrayList<String> b){
+      name = n;
+      race = r;
+      classType = c;
+      backpack = b;
+    }
 	
 	public String getName()
 	{
@@ -26,7 +34,7 @@ public class Character {
 	{
 		return classType;
 	}
-   	public ArrayList<String> getBackpack()
+   public ArrayList<String> getBackpack()
 	{
 		return backpack;
 	}
@@ -44,8 +52,8 @@ public class Character {
 		return classType = c;
 	}
    
-   	public void addBackpack(String b)
+   public void addBackpack(String b)
 	{
-      	backpack.add(b);
+      backpack.add(b);
 	}	 
 }
