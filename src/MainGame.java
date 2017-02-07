@@ -34,7 +34,7 @@ import java.util.Scanner;
           
           int correct = 0;
           Scanner scanner = new Scanner(System.in);
-          Character playerOne = new Character(null, null, null);
+          Character playerOne = new Character(null, null, null, null);
           
           Race dwarf = new Race("Dwarf", "Hardy and bold");
              raceList.add(dwarf);
@@ -61,6 +61,8 @@ import java.util.Scanner;
           String sentenceFour = "What's your race?";
           String sentenceFive = " (Type h or help for race list)";
           String sentenceSix = "Now lets decide your class!";
+          String sentenceSeven = "Adding items to inventory...";
+          String sentenceEight = "";
         
           typeItOut(question);
           System.out.println("");
@@ -123,7 +125,7 @@ import java.util.Scanner;
           else{
               for(ClassType c : classList){
                  if(inputClass.toLowerCase().equals(c.getClassType().toLowerCase())){
-                 System.out.println("Nice! A " + inputClass + " " + inputRace + ", looking good!");
+                 System.out.println("Nice! A " + inputRace + " " + inputClass + ", looking good!");
                  goodClass = true;
                  break;
                  }
@@ -136,5 +138,7 @@ import java.util.Scanner;
            }
            playerOne.setClassType(inputRace);
           }
+          typeItOut(sentenceSeven);
+          System.out.println("");
        }
  }
