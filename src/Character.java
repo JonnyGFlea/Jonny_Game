@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Character {
 	
-   private int age;
    private String name;
    private String gender;
    
@@ -11,20 +10,37 @@ public class Character {
    private String classType;
 
    private int level;
-   private int experience;
+   private int currExperience;
+   private int totalExperience;
    
    private ArrayList<String> backpack;
 	
-   public Character(String n, String r, String c, ArrayList<String> b){
+   public Character(String n, String g, String a2, String r, String c, int l1, int l2, int l3, ArrayList<String> b){
       name = n;
+      gender = g;
+      
+      alignment = a2;
       race = r;
       classType = c;
-      backpack = b;
+      
+      level = l1;
+      currExperience = l2;
+      totalExperience = l3;
+      
+      backpack = b;     
     }
 	
 	public String getName()
 	{
 		return name;
+	}
+	public String getGender()
+	{
+		return gender;
+	}
+	public String getAlignment()
+	{
+		return alignment;
 	}
 	public String getRace()
 	{
@@ -43,6 +59,14 @@ public class Character {
 	{
 		return name = n;
 	}
+	public String setGender(String g)
+	{
+		return gender = g;
+	}
+	public String setAlignment(String a)
+	{
+		return alignment = a;
+	}
 	public String setRace(String r)
 	{
 		return race = r;
@@ -56,4 +80,11 @@ public class Character {
 	{
       backpack.add(b);
 	}	 
+   public String toString(){
+	      return "\n\t\t\tName: " + name + 
+	    		  "\nAlignment: " + alignment + "\tRace: " + race + "\tClass: " + classType 
+	    		  		+ "\n\t\t\tGender: " + gender + 
+	    		  			"\nExperience: " + currExperience + "\t\tLevel: " + level + "\tNext Level: " + totalExperience +
+	    		  				"\nInventory: " + backpack; 
+   }
 }
