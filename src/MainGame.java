@@ -28,14 +28,10 @@ import java.util.Scanner;
           }
            
       }
-       public static void main(String args[]) throws InterruptedException {
-          ArrayList<Race> raceList = new ArrayList<Race>();
-          ArrayList<ClassType> classList = new ArrayList<ClassType>();
-          
-          int correct = 0;
-          Scanner scanner = new Scanner(System.in);
-          Character playerOne = new Character(null, null, null, null);
-          
+      public static String inputResponseRace(String inputRace)
+      {
+      Scanner scanner = new Scanner(System.in);
+      ArrayList<Race> raceList = new ArrayList<Race>();
           Race dwarf = new Race("Dwarf", "Hardy and bold");
              raceList.add(dwarf);
           Race elf = new Race("Elf", "Lean and magical");
@@ -44,43 +40,8 @@ import java.util.Scanner;
              raceList.add(halfling);
           Race human = new Race("Human", "Strong and nobel");
              raceList.add(human);
-             
-          ClassType cleric = new ClassType("Cleric","A priestly champion who wields divine magic in service of a higher power");
-          	 classList.add(cleric);
-  		  ClassType fighter = new ClassType("Fighter","A master of martial combat, skilled with a variety of weapons and armor");
-  		  	 classList.add(fighter);
-     	  ClassType rogue = new ClassType("Rogue","A scoundrel who uses stealth and trickery to overcome obstacles and enemies"); 
-     	  	 classList.add(rogue);
-     	  ClassType wizard = new ClassType("Wizard","A scholarly magic-user capable of manipulating the structures of reality");
-     	  	 classList.add(wizard);
-     	  		
-          String question = "What is your first name?";
-          String sentenceOne = "Hello, ";
-          String sentenceTwo = "! Welcome to the world of your own imagination.";
-          String sentenceThree = "Let's begin by creating a character...";
-          String sentenceFour = "What's your race?";
-          String sentenceFive = " (Type h or help for race list)";
-          String sentenceSix = "Now lets decide your class!";
-          String sentenceSeven = "Adding items to inventory...";
-          String sentenceEight = "";
-        
-          typeItOut(question);
-          System.out.println("");
-          String name = scanner.next();
-          typeItOut(sentenceOne);
-          typeFirstLetUpper(name);
-          playerOne.setName(name);
-          typeItOut(sentenceTwo);
-          System.out.println("");
-          typeItOut(sentenceThree);
-          System.out.println("");
-          typeItOut(sentenceFour);
-          System.out.print("");
-          typeItOut(sentenceFive);
-          System.out.println("");
-          
-          String inputRace = scanner.next();
-          boolean goodRace = false;
+      
+      boolean goodRace = false;
           
           while (!goodRace){
            if(inputRace.toLowerCase().equals("help") || inputRace.toLowerCase().equals("h")){
@@ -100,19 +61,25 @@ import java.util.Scanner;
                  if(!goodRace){
                  System.out.println("Invalid race");
                  inputRace = scanner.next();
-                 }
-                 
+                 }  
            }
            
-           playerOne.setRace(inputRace);
           }
-          
-          typeItOut(sentenceSix);
-          System.out.print("");
-          typeItOut(sentenceFive);
-          System.out.println("");
-          
-          String inputClass = scanner.next();
+          return inputRace;
+      }
+      public static String inputResponseClass(String inputClass)
+      {
+      Scanner scanner = new Scanner(System.in);
+      ArrayList<ClassType> classList = new ArrayList<ClassType>();
+        ClassType cleric = new ClassType("Cleric","A priestly champion who wields divine magic in service of a higher power");
+          classList.add(cleric);
+  		  ClassType fighter = new ClassType("Fighter","A master of martial combat, skilled with a variety of weapons and armor");
+  		  	 classList.add(fighter);
+     	  ClassType rogue = new ClassType("Rogue","A scoundrel who uses stealth and trickery to overcome obstacles and enemies"); 
+     	  	 classList.add(rogue);
+     	  ClassType wizard = new ClassType("Wizard","A scholarly magic-user capable of manipulating the structures of reality");
+     	  	 classList.add(wizard);
+
           boolean goodClass = false;
           
           while (!goodClass){
@@ -125,7 +92,7 @@ import java.util.Scanner;
           else{
               for(ClassType c : classList){
                  if(inputClass.toLowerCase().equals(c.getClassType().toLowerCase())){
-                 System.out.println("Nice! A " + inputRace + " " + inputClass + ", looking good!");
+                 System.out.println("Nice! A " + inputClass + ", looking good!");
                  goodClass = true;
                  break;
                  }
@@ -136,9 +103,70 @@ import java.util.Scanner;
                  }
                  
            }
-           playerOne.setClassType(inputRace);
+           
           }
-          typeItOut(sentenceSeven);
+         return inputClass;
+      }
+       public static void main(String args[]) throws InterruptedException {
+
+
+          ArrayList<String> bp = new ArrayList<String>();
+          
+          int correct = 0;
+          Scanner scanner = new Scanner(System.in);
+          Character playerOne = new Character(null, null, "neutral", null, null, 1, 0, 1000, bp);
+          
+
+             
+             	  	 
+          String introduction = "Welcome to the D&D character creator by JonnyGFlea!";	
+          String question = "What is your first name?";
+          String questionTwo = "What is your gender?";
+          String sentenceOne = "Hello, ";
+          String sentenceTwo = "! Welcome to the world of your own imagination.";
+          String sentenceThree = "Let's begin by creating a character...";
+          String sentenceFour = "What's your race?";
+          String sentenceFive = " (Type h or help for race list)";
+          String sentenceFive2 = " (Type h or help for class list)";
+          String sentenceSix = "Now lets decide your class!";
+          String sentenceSeven = "Adding items to inventory...";
+          String sentenceEight = "";
+        
+          typeItOut(introduction);
           System.out.println("");
+          typeItOut(question);
+          System.out.println("");
+          String name = scanner.next();
+          typeItOut(questionTwo);
+          System.out.println("");
+          String gender = scanner.next();
+          playerOne.setGender(gender);
+          typeItOut(sentenceOne);
+          typeFirstLetUpper(name);
+          playerOne.setName(name);
+          typeItOut(sentenceTwo);
+          System.out.println("");
+          typeItOut(sentenceThree);
+          System.out.println("");
+          typeItOut(sentenceFour);
+          System.out.print("");
+          typeItOut(sentenceFive);
+          System.out.println("");
+          
+          String inputRace = scanner.next();
+          playerOne.setRace(inputResponseRace(inputRace));          
+          String choiceRace = playerOne.getRace(); 
+          
+          typeItOut(sentenceSix);
+          System.out.print("");
+          typeItOut(sentenceFive2);
+          System.out.println("");
+          
+          String inputClass = scanner.next();
+          playerOne.setClassType(inputResponseClass(inputClass));
+          String choiceClass = playerOne.getClassType();
+          
+          typeItOut(sentenceSeven);
+          System.out.println(playerOne);
        }
  }
